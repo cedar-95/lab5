@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>&Lcy;&acy;&bcy;&ocy;&rcy;&acy;&tcy;&ocy;&rcy;&ncy;&acy;&yacy; &rcy;&acy;&bcy;&ocy;&tcy;&acy; &numero;5</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <span id="markdown-mermaid" aria-hidden="true" data-config="{&quot;darkModeTheme&quot;:&quot;vscode&quot;,&quot;lightModeTheme&quot;:&quot;vscode&quot;,&quot;maxTextSize&quot;:50000,&quot;clickDrag&quot;:&quot;alt&quot;,&quot;showControls&quot;:&quot;onHoverOrFocus&quot;,&quot;resizable&quot;:true,&quot;maxHeight&quot;:&quot;&quot;}"></span>
+				<h1 id="лабораторная-работа-5">Лабораторная работа №5</h1>
+<h2 id="управление-конфигурационными-файлами-с-помощью-chezmoi">Управление конфигурационными файлами с помощью chezmoi</h2>
+<p><strong>Студент:</strong> Чжу Ино<br>
+<strong>Группа:</strong> НПИбд-03-25<br>
+<strong>Студенческий билет:</strong> 1132258331</p>
+<hr>
+<h2 id="цель-работы">Цель работы</h2>
+<p>Изучить инструмент управления конфигурационными файлами chezmoi, научиться создавать резервные копии dotfiles и синхронизировать их через GitHub.</p>
+<hr>
+<h2 id="среда-выполнения">Среда выполнения</h2>
+<ul>
+<li>ОС: Rocky Linux 10.2</li>
+<li>Оболочка: Bash</li>
+<li>Инструменты: chezmoi, Git, GitHub</li>
+</ul>
+<hr>
+<h2 id="инициализация-git-репозитория-для-dotfiles">Инициализация Git-репозитория для dotfiles</h2>
+<ul>
+<li>Переход в каталог chezmoi: <code>chezmoi cd</code></li>
+<li>Инициализация репозитория: <code>git init</code></li>
+<li>Добавление файлов: <code>git add .</code></li>
+<li>Первый коммит: <code>git commit -m &quot;Initial commit of dotfiles&quot;</code></li>
+</ul>
+<hr>
+<h2 id="создание-удалённого-репозитория-на-github">Создание удалённого репозитория на GitHub</h2>
+<ul>
+<li>Создание репозитория <code>dotfiles</code> на GitHub</li>
+<li>Подключение удалённого репозитория: <code>git remote add origin &lt;URL&gt;</code></li>
+<li>Отправка файлов: <code>git push -u origin main</code></li>
+</ul>
+<hr>
+<h2 id="восстановление-конфигурации-на-новой-системе">Восстановление конфигурации на новой системе</h2>
+<ul>
+<li>Команда <code>chezmoi init --apply cedar-95</code></li>
+<li>Проверка файла: <code>cat ~/.test_alias</code></li>
+<li>Результат: <code>alias ll='ls -la'</code>, <code>alias gs='git status'</code></li>
+</ul>
+<hr>
+<h2 id="основные-команды-chezmoi">Основные команды chezmoi</h2>
+<ul>
+<li><code>chezmoi init</code> — инициализация</li>
+<li><code>chezmoi add ~/.bashrc</code> — добавление файла</li>
+<li><code>chezmoi apply</code> — применение конфигурации</li>
+<li><code>chezmoi diff</code> — просмотр изменений</li>
+</ul>
+<hr>
+<h2 id="вывод">Вывод</h2>
+<p>В ходе выполнения лабораторной работы №5 были освоены основные команды chezmoi: <code>chezmoi init</code>, <code>chezmoi add</code>, <code>chezmoi apply</code>, <code>chezmoi diff</code>. Создан репозиторий dotfiles на GitHub. Протестировано восстановление конфигурации на новой системе.</p>
+<hr>
+<h2 id="спасибо-за-внимание">Спасибо за внимание!</h2>
+
+            
+            
+        </body>
+        </html>
